@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@exodus/borc": "^2.1.0-exodus2",
-    "bip39": "^3.0.2",
+    "bip39": "2.6.0",
     "pbkdf2": "^3.0.17"
   }
 }
