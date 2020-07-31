@@ -1,6 +1,6 @@
 {
   "name": "@exodus/cardano-crypto.js",
-  "version": "5.3.3",
+  "version": "5.3.6-rc.2",
   "description": "input-output-hk/cardano-crypto compiled to pure javascript using Emscripten",
   "main": "index.js",
   "scripts": {
