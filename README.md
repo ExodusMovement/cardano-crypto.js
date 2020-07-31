@@ -48,11 +48,19 @@ var childWalletSecret = lib.derivePublic(parentWalletPublicKey, 1, 1)
 * `Buffer toPublic(Buffer privateKey)`
 * `Buffer decodePaperWalletMnemonic(string paperWalletMnemonic)`
 * `Buffer xpubToHdPassphrase(Buffer xpub)`
-* `string packAddress(Array[int] derivationPath, Buffer xpub, Buffer hdPassphrase, int derivationScheme)`
+* `Buffer packBootstrapAddress(Array[int] derivationPath, Buffer xpub, Buffer hdPassphrase, int derivationScheme)`
+* `Buffer packBaseAddress(Buffer pubKey, Buffer stakePubKey, int addressType, int networkId, Bool isStakeHash = false)`
+* `Buffer packPointerAddress(Buffer pubKey, Object pointer, int addressType, int networkId)`
+* `Buffer packEnterpriseAddress(Buffer pubKey, int addressType, int networkId)`
+* `Buffer packRewardsAccountAddress(Buffer stakePubkey, int addressType, int networkId, Bool isStakeHash = false)`
+* `Object getAddressInfo(Buffer address)`
+* `Object AddressTypes`
 * `string unpackAddress(string address, Buffer hdPassphrase)`
 * `Bool isValidAddress(string address)`
 * `Buffer blake2b(Buffer input, outputLen)`
 * `Buffer cardanoMemoryCombine(Buffer input, String password)`
+* `string bech32Encode(string prefix, Buffer data)`
+* `Object bech32Decode(string address)`
 * `[base58](https://www.npmjs.com/package/base58)`
 * `[scrypt](https://www.npmjs.com/package/scrypt-async)`
 
@@ -87,3 +95,35 @@ When trying to compile the library with emscripten 1.38.41, the `cardanoMemoryCo
 # tests
 
 * run `npm run test`
+
+# Removing wordlists from webpack/browserify
+
+* [bitcoinjs/bip39](https://github.com/bitcoinjs/bip39)
+
+Browserify/Webpack bundles can get very large if you include all the wordlists, so you can now exclude wordlists to make your bundle lighter.
+
+For example, if we want to exclude all wordlists besides chinese_simplified, you could build using the browserify command below.
+
+ ```bash
+$ browserify -r bip39 -s bip39 \
+  --exclude=./wordlists/english.json \
+  --exclude=./wordlists/japanese.json \
+  --exclude=./wordlists/spanish.json \
+  --exclude=./wordlists/italian.json \
+  --exclude=./wordlists/french.json \
+  --exclude=./wordlists/korean.json \
+  --exclude=./wordlists/chinese_traditional.json \
+   > bip39.browser.js
+```
+
+ This will create a bundle that only contains the chinese_simplified wordlist, and it will be the default wordlist for all calls without explicit wordlists.
+
+ You can also do this in Webpack using the `IgnorePlugin`. Here is an example of excluding all non-English wordlists
+
+ ```javascript
+ ...
+ plugins: [
+   new webpack.IgnorePlugin(/^\.\/wordlists\/(?!english)/, /bip39\/src$/),
+ ],
+ ...
+ ```
