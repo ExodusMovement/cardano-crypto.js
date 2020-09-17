@@ -1,6 +1,6 @@
 const {chacha20poly1305Encrypt, chacha20poly1305Decrypt, blake2b, sha3_256} = require("./crypto-primitives")
 
-const cbor = require('borc')
+const cbor = require('@exodus/borc')
 const crc32 = require('../utils/crc32')
 const base58 = require('../utils/base58')
 const bech32 = require('../utils/bech32')
