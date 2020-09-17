@@ -1,5 +1,5 @@
 {
-  "name": "cardano-crypto.js",
+  "name": "@exodus/cardano-crypto.js",
   "version": "5.3.6-rc.6",
   "description": "input-output-hk/cardano-crypto compiled to pure javascript using Emscripten",
   "main": "index.js",
@@ -27,9 +27,9 @@
     "tape": "^4.11.0"
   },
   "dependencies": {
-    "bech32": "^1.1.4",
-    "bip39": "^3.0.2",
-    "borc": "^2.1.1",
+    "@exodus/borc": "^2.1.0-exodus2",
+    "bech32": "^1.1.3",
+    "bip39": "2.6.0",
     "pbkdf2": "^3.0.17"
   }
 }
