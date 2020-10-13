@@ -83,7 +83,7 @@ We encourage you to take a look `at test/index.js` to see how the functions abov
 
 # Development
 
-* Install [emscripten](http://kripken.github.io/emscripten-site/docs/getting_started/downloads.html#installation-instructions), recommended version is 1.38.8
+* Install [emscripten](http://kripken.github.io/emscripten-site/docs/getting_started/downloads.html#installation-instructions), recommended version is 1.38.48
 * run `npm install`
 * run `npm run build`
 
@@ -92,8 +92,8 @@ We encourage you to take a look `at test/index.js` to see how the functions abov
 ```
 git clone https://github.com/emscripten-core/emsdk.git
 cd emsdk
-./emsdk install 1.39.19
-./emsdk activate 1.39.19
+./emsdk install 1.38.48
+./emsdk activate 1.38.48
 source ./emsdk_env.sh
 cd ../
 git clone https://github.com/vacuumlabs/cardano-crypto.js
@@ -105,7 +105,7 @@ shasum lib.js # should match shasum of published version of lib.js
 
 # known issues
 
-When trying to compile the library with emscripten 1.38.41, the `cardanoMemoryCombine` function slows down significantly. With the 1.38.8 version it runs significantly faster.
+When trying to compile the library with emscripten 1.38.41, the `cardanoMemoryCombine` function slows down significantly. With the 1.38.48 version it runs significantly faster.
 
 # tests
 
