@@ -43,5 +43,7 @@ child.on('exit', function(code){
   // needed in order for the library to work in the browser
   patchedLib += 'if (typeof module !== "undefined") {  module["exports"] = Module; }'
 
+  patchedLib = patchedLib.replace('(document.currentScript)', '(typeof document !== "undefined" && document.currentScript)')
+
   fs.writeFileSync('lib.js', patchedLib, 'utf-8')
 })
