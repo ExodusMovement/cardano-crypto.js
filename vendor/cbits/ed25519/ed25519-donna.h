@@ -101,7 +101,7 @@ typedef struct ge25519_pniels_t {
 	#include "ed25519-donna-64bit-x86.h"
 #else
 	#include "ed25519-donna-32bit-tables.h"
-	#include "ed25519-donna-64bit-x86-32bit.h"
+	// #include "ed25519-donna-64bit-x86-32bit.h"
 #endif
 
 
